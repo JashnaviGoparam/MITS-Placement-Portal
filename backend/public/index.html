@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MITS Student Placement Management Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo-section">
+
+        <div class="mits-logo">
+            MITS
+        </div>
+
+        <div>
+            <h1>MITS</h1>
+            <p>Student Placement Management Portal</p>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#companies">Companies</a>
+
+        <a href="#login">Student Login</a>
+
+        <a href="#register">Register</a>
+
+        <a href="#officer-login">Officer</a>
+
+        <button id="logoutBtn"
+                onclick="logout()"
+                style="display:none;">
+            Logout
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <h2>
+            MITS Student Placement Management Portal
+        </h2>
+
+        <p>
+            Connecting Students with Career Opportunities
+        </p>
+
+        <p>
+            Explore companies, check eligibility,
+            apply for placement drives and track
+            your application status.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button onclick="showSection('companies')">
+                View Companies
+            </button>
+
+            <button onclick="showSection('login')">
+                Student Login
+            </button>
+
+            <button onclick="showSection('register')">
+                Register
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <h2>Portal Features</h2>
+
+    <div class="feature-container">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🎓</div>
+
+            <h3>Student Registration</h3>
+
+            <p>
+                Create your placement account
+                using your MITS academic details.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🏢</div>
+
+            <h3>Placement Companies</h3>
+
+            <p>
+                View companies, job roles,
+                packages and eligibility criteria.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">📄</div>
+
+            <h3>Easy Application</h3>
+
+            <p>
+                Submit your resume, skills,
+                projects and certificates.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">📊</div>
+
+            <h3>Track Application</h3>
+
+            <p>
+                Check your placement round
+                and selection status.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMPANIES ================= -->
+
+<section id="companies" class="page-section">
+
+    <h2>Placement Companies</h2>
+
+    <p class="section-description">
+        Available companies and placement drives
+    </p>
+
+    <div id="companiesContainer"
+         class="company-container">
+
+        <p>Loading companies...</p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="login" class="form-section">
+
+    <div class="form-card">
+
+        <h2>Student Login</h2>
+
+        <p>
+            Login using your MITS Roll Number
+        </p>
+
+        <form id="loginForm">
+
+            <label>
+                MITS Roll Number
+            </label>
+
+            <input
+                type="text"
+                id="loginRollNumber"
+                placeholder="Enter Roll Number"
+                required
+            >
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter Password"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p class="form-link">
+
+            Don't have an account?
+
+            <a href="#register">
+                Register Here
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REGISTER ================= -->
+
+<section id="register" class="form-section">
+
+    <div class="form-card large-card">
+
+        <h2>Student Registration</h2>
+
+        <p>
+            Create your MITS placement account
+        </p>
+
+        <form id="registerForm">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Enter full name"
+                required
+            >
+
+
+            <label>
+                MITS Roll Number
+            </label>
+
+            <input
+                type="text"
+                id="rollNumber"
+                placeholder="Enter roll number"
+                required
+            >
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="studentEmail"
+                placeholder="Enter email"
+                required
+            >
+
+
+            <label>
+                Branch
+            </label>
+
+            <select
+                id="branch"
+                onchange="handleBranchChange()"
+                required>
+
+                <option value="">
+                    Select Branch
+                </option>
+
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+                <option value="CIVIL">CIVIL</option>
+
+            </select>
+
+
+            <div id="specializationBox"
+                 style="display:none;">
+
+                <label>
+                    CSE Specialization
+                </label>
+
+                <select id="specialization">
+
+                    <option value="">
+                        Select Specialization
+                    </option>
+<option value="CSE">CSE core</option>
+                    <option value="AI">AI</option>
+                    <option value="CS">CS</option>
+                    <option value="DS">DS</option>
+                    <option value="AI/ML">AI/ML</option>
+                    <option value="CST">CST</option>
+
+                </select>
+
+            </div>
+
+
+            <label>
+                CGPA
+            </label>
+
+            <input
+                type="number"
+                id="cgpa"
+                min="0"
+                max="10"
+                step="0.01"
+                placeholder="Enter CGPA"
+                required
+            >
+
+
+            <label>
+                Technical Skills
+            </label>
+
+            <textarea
+                id="skills"
+                rows="4"
+                placeholder="Java, Python, SQL, HTML, CSS">
+            </textarea>
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create password"
+                required
+            >
+
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STUDENT DASHBOARD ================= -->
+
+<section id="studentDashboard"
+         class="dashboard-section"
+         style="display:none;">
+
+    <div class="dashboard-header">
+
+        <h2>Student Dashboard</h2>
+
+        <p id="studentWelcome">
+            Welcome Student
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h3>My Profile</h3>
+
+        <div id="studentProfile"></div>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h3>My Applications</h3>
+
+        <div id="myApplications"
+             class="table-container">
+
+            No applications found.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= APPLICATION ================= -->
+
+<section id="applicationSection"
+         class="form-section"
+         style="display:none;">
+
+    <div class="form-card large-card">
+
+        <h2>Company Application</h2>
+
+        <p id="applicationCompanyName">
+            Placement Application
+        </p>
+
+        <form id="applicationForm">
+
+            <input
+                type="hidden"
+                id="applicationCompanyId"
+            >
+
+
+            <label>
+                Technical Domain
+            </label>
+
+            <select id="technicalDomain"
+                    required>
+
+                <option value="">
+                    Select Domain
+                </option>
+
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="SQL">SQL</option>
+                <option value="Web Development">
+                    Web Development
+                </option>
+                <option value="Data Science">
+                    Data Science
+                </option>
+                <option value="Artificial Intelligence">
+                    Artificial Intelligence
+                </option>
+                <option value="Machine Learning">
+                    Machine Learning
+                </option>
+                <option value="Cyber Security">
+                    Cyber Security
+                </option>
+                <option value="Cloud Computing">
+                    Cloud Computing
+                </option>
+                <option value="Full Stack Development">
+                    Full Stack Development
+                </option>
+                <option value="Other">Other</option>
+
+            </select>
+
+
+            <label>
+                Technical Skills
+            </label>
+
+            <textarea
+                id="technicalSkills"
+                rows="4"
+                placeholder="Enter technical skills"
+                required>
+            </textarea>
+
+
+            <label>
+                Upload Resume
+            </label>
+
+            <input
+                type="file"
+                id="resume"
+                accept=".pdf,.doc,.docx"
+                required
+            >
+
+
+            <label>
+                Upload Certificate
+            </label>
+
+            <input
+                type="file"
+                id="certificate"
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+            >
+
+
+            <label>
+                Project Links
+            </label>
+
+            <textarea
+                id="projectLinks"
+                rows="3"
+                placeholder="GitHub / Live Project / Portfolio">
+            </textarea>
+
+
+            <label>
+                Candidate Type
+            </label>
+
+            <select id="candidateType">
+
+                <option value="Fresher">
+                    Fresher
+                </option>
+
+                <option value="Experienced">
+                    Experienced
+                </option>
+
+            </select>
+
+
+            <div class="form-buttons">
+
+                <button type="submit">
+                    Submit Application
+                </button>
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeApplicationForm()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OFFICER LOGIN ================= -->
+
+<section id="officer-login"
+         class="form-section">
+
+    <div class="form-card">
+
+        <h2>Placement Officer Login</h2>
+
+        <form id="officerLoginForm">
+
+            <label>
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="officerUsername"
+                placeholder="Enter username"
+                required
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="officerPassword"
+                placeholder="Enter password"
+                required
+            >
+
+
+            <button type="submit">
+                Officer Login
+            </button>
+
+        </form>
+
+        <div class="demo-info">
+
+            Demo Login<br>
+            Username: <b>officer</b><br>
+            Password: <b>mits123</b>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OFFICER DASHBOARD ================= -->
+
+<section id="officerDashboard"
+         class="dashboard-section"
+         style="display:none;">
+
+    <div class="dashboard-header">
+
+        <h2>Placement Officer Dashboard</h2>
+
+        <p>
+            Manage companies and student applications
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+
+            <h3 id="totalCompanies">0</h3>
+
+            <p>Companies</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3 id="totalApplications">0</h3>
+
+            <p>Applications</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3 id="totalSelected">0</h3>
+
+            <p>Selected</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADD COMPANY -->
+
+    <div class="dashboard-card">
+
+        <h3>Add Placement Drive</h3>
+
+        <form id="companyForm">
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Company Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="companyName"
+                        placeholder="Company name"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Job Role
+                    </label>
+
+                    <input
+                        type="text"
+                        id="jobRole"
+                        placeholder="Job role"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Package
+                    </label>
+
+                    <input
+                        type="text"
+                        id="package"
+                        placeholder="Example: 5 LPA"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Eligible Branches
+                    </label>
+
+                    <input
+                        type="text"
+                        id="eligibleBranches"
+                        placeholder="CSE, IT, ECE"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Minimum CGPA
+                    </label>
+
+                    <input
+                        type="number"
+                        id="minimumCgpa"
+                        min="0"
+                        max="10"
+                        step="0.01"
+                        placeholder="6.00"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="companyLocation"
+                        placeholder="Bangalore"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Required Skills
+            </label>
+
+            <textarea
+                id="requiredSkills"
+                rows="3"
+                placeholder="Java, Python, SQL">
+            </textarea>
+
+
+            <button type="submit">
+                Add Company
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- COMPANIES -->
+
+    <div class="dashboard-card">
+
+        <h3>Manage Companies</h3>
+
+        <div id="officerCompanies"
+             class="table-container">
+
+            Loading...
+
+        </div>
+
+    </div>
+
+
+    <!-- APPLICATIONS -->
+
+    <div class="dashboard-card">
+
+        <h3>Student Applications</h3>
+
+        <div id="officerApplications"
+             class="table-container">
+
+            Loading...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <h3>
+        MITS Student Placement Management Portal
+    </h3>
+
+    <p>
+        Madanapalle Institute of Technology & Science
+    </p>
+
+    <p>
+        Placement Department
+    </p>
+
+    <p>
+        © 2026 MITS
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
