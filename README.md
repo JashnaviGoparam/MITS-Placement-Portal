@@ -3,8 +3,6 @@
 A web-based Student Placement Management Portal developed for MITS College.
 
 
-live website : mits-placement-portal.vercel.app
-
 ## Features
 
 ### Student
