@@ -6,7 +6,7 @@ const path = require("path");
 const db = require("./database");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 
 // ==========================================
@@ -731,18 +731,11 @@ app.post("/api/companies", (req, res) => {
 // ==========================================
 // START SERVER
 // ==========================================
-
-app.listen(PORT, () => {
-
+app.listen(PORT, "0.0.0.0", () => {
     console.log("");
-
     console.log("=================================");
     console.log("MITS Placement Portal");
-    console.log(
-        `Website: http://localhost:${PORT}`
-    );
+    console.log(`Website: http://localhost:${PORT}`);
     console.log("=================================");
-
     console.log("");
-
 });
