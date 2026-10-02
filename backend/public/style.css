@@ -126,7 +126,7 @@ nav button:hover {
             rgba(11, 61, 145, 0.92),
             rgba(23, 105, 209, 0.92)
         );
-    
+
     color: white;
 }
 
@@ -194,17 +194,30 @@ nav button:hover {
     gap: 25px;
 }
 
+
+/* CLICKABLE FEATURE CARDS */
+
 .feature-card {
     background: #f8faff;
     border: 1px solid #e1e8f5;
     padding: 30px 22px;
     border-radius: 12px;
     transition: 0.3s;
+    cursor: pointer;
+
+    /* Added for <a> feature cards */
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:active {
+    transform: translateY(-2px);
 }
 
 .feature-icon {
